@@ -35,11 +35,9 @@ INSTALLED_APPS = [
     "apps.transactions",
     "apps.audit",
     "apps.dashboard",
-    "corsheaders",
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -122,7 +120,7 @@ CORS_ALLOWED_ORIGINS = [
     o.strip()
     for o in os.getenv(
         "CORS_ALLOWED_ORIGINS",
-        "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000",
+        "http://fonova-bank-1.onrender.com",
     ).split(",")
     if o.strip()
 ]
@@ -168,9 +166,7 @@ if os.getenv("BEHIND_PROXY", "false").lower() == "true":
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://fonova-bank-1.onrender.com",
-]
+
 CSRF_TRUSTED_ORIGINS = [
     "http://fonova-bank-1.onrender.com",
 ]
