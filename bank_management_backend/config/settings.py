@@ -35,9 +35,11 @@ INSTALLED_APPS = [
     "apps.transactions",
     "apps.audit",
     "apps.dashboard",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -165,3 +167,11 @@ if os.getenv("BEHIND_PROXY", "false").lower() == "true":
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://fonova-bank-1.onrender.com",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "http://fonova-bank-1.onrender.com",
+]
+ALLOWED_HOSTS = [".onrender.com","localhost"]
